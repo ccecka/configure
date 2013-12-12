@@ -1,0 +1,96 @@
+#!/bin/bash
+
+####################
+### Repositories ###
+####################
+
+## GCC/G++
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+## Clang
+sudo add-apt-repository 'deb http://llvm.org/apt/precise/ llvm-toolchain-precise main'
+sudo wget -q -O - http://llvm.org/apt/llvm-snapshot.gpg.key | sudo apt-key add -
+## Gimp
+sudo add-apt-repository ppa:otto-kesselgulasch/gimp
+## TeX
+sudo add-apt-repository ppa:texlive-backports/ppa
+## Chrome
+sudo apt-get-repository 'deb http://dl.google.com/linux/deb/ stable non-free main'
+sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+
+
+####################
+###### Update ######
+####################
+sudo apt-get update
+
+####################
+### Remove bloat ###
+####################
+sudo apt-get remove --purge --ignore-missing gbrainy aisleriot gbrainy gnome-games-* gnome-sudoku gnomine libgme0 mahjongg bogofilter* empathy* thunderbird* remmina gwibber* tomboy avahi-daemon whoopsie samba* modemmanager ubuntuone* rhythmbox* activity-log-manager-common python-zeitgeist zeitgeist-core deja-dup pidgin* apport*
+
+####################
+###### Install #####
+####################
+## GCC and G++
+sudo apt-get install build-essential gfortran -y
+sudo apt-get install gcc-4.4 gcc-4.5 gcc-4.6 gcc-4.7 gcc-4.8 g++-4.4 g++-4.5 g++-4.6 g++-4.7 g++-4.8 -y
+# Tell update-alternatives about our compilers
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.4 40 --slave /usr/bin/g++ g++ /usr/bin/g++-4.4
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.5 50 --slave /usr/bin/g++ g++ /usr/bin/g++-4.5
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.6
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.7 70 --slave /usr/bin/g++ g++ /usr/bin/g++-4.7
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 80 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8
+# Use this to switch compilers:
+# sudo update-alternatives --config gcc
+## Clang 3.4
+sudo apt-get install clang-3.4 clang-3.4-doc libclang-common-3.4-dev libclang-3.4-dev libclang1-3.4 libclang1-3.4-dbg libllvm-3.4-ocaml-dev libllvm3.4 libllvm3.4-dbg lldb-3.4 llvm-3.4 llvm-3.4-dev llvm-3.4-doc llvm-3.4-examples llvm-3.4-runtime cpp11-migrate-3.4 clang-format-3.4 -y
+
+# MPI
+sudo apt-get install autotools-dev openmpi-bin libopenmpi-dev -y
+# C/C++ Libraries
+sudo apt-get install cmake libboost-all-dev libfftw3-dev libsuitesparse-metis-dev -y
+# Python
+sudo apt-get install ipython python-apptools python-nose python-setuptools python-docutils python-scipy python-numpy python-matplotlib python-mrjob python-mpi4py python-cheetah python-opencv -y
+sudo easy_install StarCluster
+# Java
+sudo apt-get install openjdk-7-jdk -y
+# Latex
+sudo apt-get install texlive texlive-full texlive-latex-base texlive-latex-extra texlive-fonts-extra texmaker myspell-en-us -y
+# Chrome and Network
+sudo apt-get install google-chrome-stable openssh-server sshfs autossh -y
+# Git
+sudo apt-get install git gitk -y
+# Editors
+sudo apt-get install emacs23 vim -y
+# Visualization
+sudo apt-get install libglew1.6 libglew1.6-dev libsdl-dev -y
+# Dropbox
+sudo apt-get install nautilus-dropbox -y
+# VLC
+sudo apt-get install vlc -y
+# Gimp
+sudo apt-get install gimp gimp-plugin-registry -y
+# Proprietary
+sudo apt-get install ubuntu-restricted-extras -y
+
+# TODO: CUDA?
+
+####################
+##### Upgrade ######
+####################
+sudo apt-get upgrade -y
+
+####################
+##### Configure ####
+####################
+git config --global user.name "Cris Cecka"
+git config --global user.email "ccecka@seas.harvard.edu"
+git config --global core.editor emacs
+git config --global color.ui true
+
+# Remove Launcher crap
+gsettings set com.canonical.Unity.Launcher favorites "['nautilus-home.desktop','ubuntu-software-center.desktop']"
+
+# Copy emacs configurations
+cp .emacs ~/
+cp -r .emacs.d ~/
