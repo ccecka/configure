@@ -55,7 +55,7 @@
 (defvar macosx-p    (string-match "darwin"     system-type-as-string))
 (defvar linux-p     (string-match "linux"      system-type-as-string))
 
-;; Default fonts and frame height and width
+;; Default frame height and width
 ;;(if linux-p (set-frame-size (selected-frame) 85 100))
 ;;(if macosx-p (set-frame-size (selected-frame) 80 90))
 (cond (macosx-p (setq default-frame-alist
@@ -67,6 +67,10 @@
 										 '((font . "Liberation Mono-10")
 											 (width . 85)
 											 (height . 100)))))
+;; Default fonts
+;;(if linux-p (set-default-font "Liberation Mono-10"))
+;; Liberation Mono isn't standard in MacOSX, may need to install from ttf
+;;(if macosx-p (set-default-font "-apple-liberation mono-medium-r-normal--11-110-72-72-m-110-iso10646-1"))
 
 ;; Path to look for extra files
 (add-to-list 'load-path "~/.emacs.d")
@@ -91,33 +95,31 @@
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
+;; Load guess-style to detect tab size, etc
+(require 'guess-style)
+(autoload 'guess-style-set-variable "guess-style" nil t)
+(autoload 'guess-style-guess-variable "guess-style")
+(autoload 'guess-style-guess-all "guess-style" nil t)
+
 ;; Load smart-tabs-mode
 (require 'smart-tabs-mode)
-;;(autoload 'smart-tabs-mode "smart-tabs-mode"
-;;	"Intelligently indent with tabs, align with spaces!")
-;;(autoload 'smart-tabs-mode-enable "smart-tabs-mode")
-;;(autoload 'smart-tabs-advice "smart-tabs-mode")
+(smart-tabs-insinuate 'c 'c++ 'java 'javascript 'cperl 'python 'ruby 'nxml)
 
-;; C/C++ smart-tabs
-(add-hook 'c-mode-hook 'smart-tabs-mode-enable)
+;; C/C++ style
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+(add-hook 'c-mode-common-hook 'guess-style-guess-all)
+(add-hook 'c-mode-common-hook 'smart-tabs-mode-enable)
 (smart-tabs-advice c-indent-line c-basic-offset)
 (smart-tabs-advice c-indent-region c-basic-offset)
 
-;; Python either tabs or spaces
-(require 'guess-style)
-;;(autoload 'guess-style-guess-tabs-mode "guess-style")
-;;(autoload 'guess-style-guess-tab-width "guess-style")
-(add-hook 'python-mode-hook 'guess-style-guess-tabs-mode)
-(add-hook 'python-mode-hook (lambda ()
-															(when indent-tabs-mode
-																(guess-style-guess-tab-width))))
+;; Python smart-tabs
+(add-hook 'python-mode-hook 'guess-style-guess-all)
+(add-hook 'python-mode-hook 'smart-tabs-mode-enable)
+(smart-tabs-advice python-indent-line-1 python-indent)
 
-;; No indentation of class/fn names after template <>, etc
-;;(c-set-offset 'topmost-intro-cont 0 nil)
 ;; Remove trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-
 
 ;;________________________________________________________________
 ;;    File extensions
