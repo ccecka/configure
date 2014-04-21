@@ -76,7 +76,7 @@ sudo apt-get upgrade -y
 ####################
 git config --global user.name "Cris Cecka"
 git config --global user.email "ccecka@seas.harvard.edu"
-git config --global core.editor emacs
+git config --global core.editor emacs -nw
 git config --global color.ui true
 
 # Copy emacs configurations
