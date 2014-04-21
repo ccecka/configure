@@ -50,7 +50,7 @@ sudo apt-get install texlive texlive-full texlive-latex-base texlive-latex-extra
 # Chrome and Network
 sudo apt-get install google-chrome-stable openssh-server sshfs autossh -y
 # Git
-sudo apt-get install git gitk -y
+sudo apt-get install git gitk colordiff -y
 # Editors
 sudo apt-get install emacs vim -y
 # Visualization
@@ -74,10 +74,20 @@ sudo apt-get upgrade -y
 ####################
 ##### Configure ####
 ####################
+# Git
 git config --global user.name "Cris Cecka"
 git config --global user.email "ccecka@seas.harvard.edu"
 git config --global core.editor emacs -nw
 git config --global color.ui true
+
+# Custom commands and improvements
+echo "\n# Custom commands and aliases\n" >> ~/.bashrc
+echo "# Colorize and include line number in grep" >> ~/.bashrc
+echo "alias grep='grep -n --color=auto'" >> ~/.bashrc
+echo "alias egrep='egrep -n --color=auto'" >> ~/.bashrc
+echo "alias fgrep='fgrep -n --color=auto'" >> ~/.bashrc
+echo "# Colorize diff" >> ~/.bashrc
+echo "alias diff='colordiff'" >> ~/.bashrc
 
 # Copy emacs configurations
 cp .emacs ~/

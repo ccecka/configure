@@ -181,8 +181,6 @@
 (global-set-key [f17] 'eval-region)
 
 
-
-
 ;; Auto start speedbar
 (speedbar 1)
 (add-to-list 'speedbar-frame-parameters '(left-fringe . 0) '(right-fringe . 0))
