@@ -54,7 +54,7 @@ sudo apt-get install git gitk colordiff -y
 # Editors
 sudo apt-get install emacs vim -y
 # Visualization
-sudo apt-get install libglew-dev libsdl1.2-dev -y
+sudo apt-get install libglew-dev freeglut3 freeglut3-dev libsdl1.2-dev -y
 # Dropbox
 sudo apt-get install nautilus-dropbox -y
 # VLC
