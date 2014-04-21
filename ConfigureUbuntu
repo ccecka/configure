@@ -46,7 +46,7 @@ sudo easy_install StarCluster
 # Java
 sudo apt-get install openjdk-7-jdk -y
 # Latex
-sudo apt-get install texstudio -y
+sudo apt-get install texlive texlive-full texlive-latex-base texlive-latex-extra texstudio -y
 # Chrome and Network
 sudo apt-get install google-chrome-stable openssh-server sshfs autossh -y
 # Git
