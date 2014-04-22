@@ -88,6 +88,7 @@
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
+(setq c-echo-syntactic-information-p t)
 
 ;; Load guess-style to detect tab size, etc
 (require 'guess-style)
@@ -96,21 +97,21 @@
 (autoload 'guess-style-guess-all "guess-style" nil t)
 
 ;; Load smart-tabs-mode
-(require 'smart-tabs-mode)
-(smart-tabs-insinuate 'c 'c++ 'java 'javascript 'cperl 'python 'ruby 'nxml)
+;;(require 'smart-tabs-mode)
+;;(smart-tabs-insinuate 'c 'c++ 'java 'javascript 'cperl 'python 'ruby 'nxml)
 
 ;; C/C++ style
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 (add-hook 'c-mode-common-hook 'guess-style-guess-all)
-(add-hook 'c-mode-common-hook 'smart-tabs-mode-enable)
-(smart-tabs-advice c-indent-line c-basic-offset)
-(smart-tabs-advice c-indent-region c-basic-offset)
+;;(add-hook 'c-mode-common-hook 'smart-tabs-mode-enable)
+;;(smart-tabs-advice c-indent-line c-basic-offset)
+;;(smart-tabs-advice c-indent-region c-basic-offset)
 
 ;; Python smart-tabs
-(add-hook 'python-mode-hook 'guess-style-guess-all)
-(add-hook 'python-mode-hook 'smart-tabs-mode-enable)
-(smart-tabs-advice python-indent-line-1 python-indent)
+;;(add-hook 'python-mode-hook 'guess-style-guess-all)
+;;(add-hook 'python-mode-hook 'smart-tabs-mode-enable)
+;;(smart-tabs-advice python-indent-line-1 python-indent)
 
 ;; Remove trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -179,6 +180,8 @@
 (global-set-key [f15] 'ptreg3)
 (global-set-key [f16] 'ptreg4) ;; interesting; by default it maps to <print>.
 (global-set-key [f17] 'eval-region)
+
+
 
 
 ;; Auto start speedbar
