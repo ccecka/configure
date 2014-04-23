@@ -41,7 +41,7 @@ sudo apt-get install autotools-dev openmpi-bin libopenmpi-dev -y
 # C/C++ Libraries
 sudo apt-get install cmake libboost-all-dev libfftw3-dev libsuitesparse-metis-dev -y
 # Python
-sudo apt-get install ipython python-apptools python-nose python-setuptools python-docutils python-scipy python-numpy python-matplotlib python-mrjob python-mpi4py python-cheetah python-opencv -y
+sudo apt-get install python-dev ipython python-setuptools python-pip python-scipy python-numpy python-matplotlib python-mrjob python-mpi4py python-cheetah python-opencv python-docutils -y
 sudo easy_install StarCluster
 # Java
 sudo apt-get install openjdk-7-jdk -y
