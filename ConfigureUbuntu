@@ -52,7 +52,7 @@ sudo apt-get install google-chrome-stable openssh-server sshfs autossh -y
 # Git
 sudo apt-get install git gitk colordiff -y
 # Editors
-sudo apt-get install emacs vim -y
+sudo apt-get install emacs vim nautilus-open-terminal -y
 # Visualization
 sudo apt-get install libglew-dev freeglut3 freeglut3-dev libsdl1.2-dev -y
 # Dropbox
