@@ -28,9 +28,9 @@ sudo apt-get remove --purge --ignore-missing gbrainy aisleriot gbrainy gnome-gam
 sudo apt-get install build-essential gfortran -y
 sudo apt-get install gcc-4.6 gcc-4.7 gcc-4.8 g++-4.6 g++-4.7 g++-4.8 -y
 # Tell update-alternatives about our compilers
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.6
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.7 70 --slave /usr/bin/g++ g++ /usr/bin/g++-4.7
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 80 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.6 60
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.7 70 --slave /usr/bin/g++ g++ /usr/bin/g++-4.7 70
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 80 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8 80
 # Use this to switch compilers:
 # sudo update-alternatives --config gcc
 ## Clang 3.5
@@ -48,7 +48,7 @@ sudo apt-get install openjdk-7-jdk -y
 # Latex
 sudo apt-get install texlive texlive-full texlive-latex-base texlive-latex-extra texstudio -y
 # Chrome and Network
-sudo apt-get install google-chrome-stable openssh-server sshfs autossh -y
+sudo apt-get install google-chrome-stable openssh-server sshfs autossh skype -y
 # Git
 sudo apt-get install git gitk colordiff -y
 # Editors
