@@ -81,13 +81,10 @@ git config --global core.editor 'emacs -nw'
 git config --global color.ui true
 
 # Custom commands and improvements
-echo "\n# Custom commands and aliases\n" >> ~/.bashrc
-echo "# Colorize and include line number in grep" >> ~/.bashrc
-echo "alias grep='grep -n --color=auto'" >> ~/.bashrc
-echo "alias egrep='egrep -n --color=auto'" >> ~/.bashrc
-echo "alias fgrep='fgrep -n --color=auto'" >> ~/.bashrc
-echo "# Colorize diff" >> ~/.bashrc
-echo "alias diff='colordiff'" >> ~/.bashrc
+echo -e "\n## Custom commands and aliases\n" >> ~/.bashrc
+echo -e "\n# Grep with line numbers, but only if not in a pipeline\nfunction grep() {\n\tif [[ -t 1 ]]; then\n\t\tcommand grep -n \"\$@\"\n\telse\n\t\tcommand grep \"\$@\"\n\tfi\n}" >> ~/.bashrc
+echo -e "# Colorize diff" >> ~/.bashrc
+echo -e "alias diff='colordiff'" >> ~/.bashrc
 
 # Copy emacs configurations
 cp .emacs ~/
