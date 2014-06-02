@@ -49,8 +49,8 @@ sudo apt-get install openjdk-7-jdk -y
 sudo apt-get install texlive texlive-full texlive-latex-base texlive-latex-extra texstudio -y
 # Chrome and Network
 sudo apt-get install google-chrome-stable openssh-server sshfs autossh skype -y
-# Git
-sudo apt-get install git gitk colordiff -y
+# Version Control
+sudo apt-get install git mercurial gitk colordiff -y
 # Editors
 sudo apt-get install emacs vim nautilus-open-terminal -y
 # Visualization
