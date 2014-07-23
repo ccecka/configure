@@ -1,0 +1,37 @@
+#!/bin/bash
+#
+# Install recommendations and notes for OSX Mavericks
+#
+
+####################
+###### Install #####
+####################
+
+# Install Brew
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+brew doctor
+
+# PATH for brew installs
+echo -e "# Update PATH to prefer brew installs\nexport PATH=/usr/local/bin:\$PATH" >> ~/.bashrc
+
+# gcc
+brew tap homebrew/versions
+brew install gcc48
+brew install gcc47
+ln -s -i -v /usr/local/bin/g++-4.8 /usr/local/bin/g++
+
+# MPI
+brew install open-mpi
+
+# Emacs
+brew install emacs --HEAD --use-git-head --cocoa --srgb
+
+####################
+##### Configure ####
+####################
+
+# Git
+git config --global user.name "Cris Cecka"
+git config --global user.email "ccecka@seas.harvard.edu"
+git config --global core.editor 'emacs -nw'
+git config --global color.ui true

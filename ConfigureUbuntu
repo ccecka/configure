@@ -14,16 +14,19 @@ sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /et
 ####################
 ###### Update ######
 ####################
+
 sudo apt-get update
 
 ####################
 ### Remove bloat ###
 ####################
+
 sudo apt-get remove --purge --ignore-missing gbrainy aisleriot gbrainy gnome-games-* gnome-sudoku gnomine libgme0 mahjongg bogofilter* empathy* thunderbird* remmina gwibber* tomboy avahi-daemon whoopsie samba* modemmanager rhythmbox* activity-log-manager-common python-zeitgeist zeitgeist-core deja-dup pidgin* apport*
 
 ####################
 ###### Install #####
 ####################
+
 ## GCC and G++
 sudo apt-get install build-essential gfortran -y
 sudo apt-get install gcc-4.6 gcc-4.7 gcc-4.8 g++-4.6 g++-4.7 g++-4.8 -y
@@ -69,11 +72,13 @@ sudo apt-get install ubuntu-restricted-extras -y
 ####################
 ##### Upgrade ######
 ####################
+
 sudo apt-get upgrade -y
 
 ####################
 ##### Configure ####
 ####################
+
 # Git
 git config --global user.name "Cris Cecka"
 git config --global user.email "ccecka@seas.harvard.edu"

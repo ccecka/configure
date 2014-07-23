@@ -67,11 +67,11 @@
 											 (height . 100)))))
 
 ;; Path to look for extra files
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
 ;; Turn on my color theme
 ;; Generated with http://jasonm23.github.com/emacs-theme-editor/
-(load-file "~/.emacs.d/themes/cecka-theme.el")
+(load-file "~/.emacs.d/lisp/themes/cecka-theme.el")
 (cecka-theme)
 
 ;; Set the mac keyboard up for sane emacs usage
