@@ -12,19 +12,24 @@ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 brew doctor
 
 # PATH for brew installs
-echo -e "# Update PATH to prefer brew installs\nexport PATH=/usr/local/bin:\$PATH" >> ~/.bashrc
+echo -e "# Update PATH to prefer brew installs\nexport PATH=/usr/local/bin:\$PATH" >> ~/.bash_profile
 
 # gcc
 brew tap homebrew/versions
 brew install gcc48
 brew install gcc47
 ln -s -i -v /usr/local/bin/g++-4.8 /usr/local/bin/g++
+brew install boost
 
 # MPI
 brew install open-mpi
 
 # Emacs
 brew install emacs --HEAD --use-git-head --cocoa --srgb
+
+# Latex
+brew install caskroom/cask/brew-cask
+brew cask install mactex
 
 ####################
 ##### Configure ####
