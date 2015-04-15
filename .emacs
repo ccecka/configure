@@ -103,13 +103,13 @@
 ;; C/C++ style
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
-(add-hook 'c-mode-common-hook 'guess-style-guess-all)
+;;(add-hook 'c-mode-common-hook 'guess-style-guess-all)
 ;;(add-hook 'c-mode-common-hook 'smart-tabs-mode-enable)
 ;;(smart-tabs-advice c-indent-line c-basic-offset)
 ;;(smart-tabs-advice c-indent-region c-basic-offset)
 
 ;; Python smart-tabs
-;;(add-hook 'python-mode-hook 'guess-style-guess-all)
+(add-hook 'python-mode-hook 'guess-style-guess-all)
 ;;(add-hook 'python-mode-hook 'smart-tabs-mode-enable)
 ;;(smart-tabs-advice python-indent-line-1 python-indent)
 
@@ -127,7 +127,10 @@
 
 ;; Treat .h and .cu files like C++
 (add-to-list 'auto-mode-alist '("\\.cu$" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.cuh$" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.inl$" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.tcc$" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.kern$" . c++-mode))
 
 ;;________________________________________________________________
@@ -182,13 +185,14 @@
 (global-set-key [f17] 'eval-region)
 
 
-
-
 ;; Auto start speedbar
 (speedbar 1)
 (add-to-list 'speedbar-frame-parameters '(left-fringe . 0) '(right-fringe . 0))
 (set-face-attribute 'speedbar-button-face nil :height 100)
 (speedbar-add-supported-extension ".cu")
-(speedbar-add-supported-extension ".kern")
+(speedbar-add-supported-extension ".cuh")
+(speedbar-add-supported-extension ".tcc")
+(speedbar-add-supported-extension ".inl")
 (speedbar-add-supported-extension ".inc")
+(speedbar-add-supported-extension ".kern")
 ;;(other-frame 0)

@@ -24,6 +24,10 @@ brew install boost
 # MPI
 brew install open-mpi
 
+# BLAS/LAPACK
+brew tap homebrew/dupes
+brew install lapack
+
 # Emacs
 brew install emacs --HEAD --use-git-head --cocoa --srgb
 
